@@ -1,6 +1,6 @@
 type Product = {name: string, price: number}
 
-export default class ShoppingCart {
+export default class LegacyShoppingCart {
   private readonly _products: Product[] = [];
   private cartStatus: "open" | "closed" = "open";
 
@@ -53,7 +53,7 @@ export default class ShoppingCart {
   }
 }
 
-const cart = new ShoppingCart();
+const cart = new LegacyShoppingCart();
 cart.addProduct({name: "Teste", price: 10});
 cart.addProduct({name: "Teste", price: 10});
 console.log(cart.products, cart.total());

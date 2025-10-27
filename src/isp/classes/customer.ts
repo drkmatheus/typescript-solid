@@ -1,6 +1,10 @@
-import { EnterpriseCustomer, IndividualCustomer } from './interface/customer';
+import {
+  CustomerInfo,
+  EnterpriseCustomer,
+  IndividualCustomer,
+} from './interface/customer';
 
-export class PFCustomer implements IndividualCustomer {
+export class PFCustomer implements IndividualCustomer, CustomerInfo {
   firstName: string;
   lastName: string;
   cpf: string;
@@ -10,13 +14,28 @@ export class PFCustomer implements IndividualCustomer {
     this.lastName = lastName;
     this.cpf = cpf;
   }
+
+  getName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
+
+  getIDN(): string {
+    return this.cpf;
+  }
 }
-export class PJCustomer implements EnterpriseCustomer {
+export class PJCustomer implements EnterpriseCustomer, CustomerInfo {
   name: string;
   cnpj: string;
 
   constructor(name: string, cnpj: string) {
     this.name = name;
     this.cnpj = cnpj;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+  getIDN(): string {
+    return this.cnpj;
   }
 }
